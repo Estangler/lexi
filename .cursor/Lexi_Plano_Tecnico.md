@@ -27,7 +27,7 @@ Lexi é uma SPA que permite ao usuário colar qualquer texto e receber três an�
 
 **Definition of Done:** todas as classes de cor do design system funcionando via tokens CSS.
 
-- [ ] Criar `src/index.css` com bloco `@theme` contendo os tokens:
+- [x] Criar `src/index.css` com bloco `@theme` contendo os tokens:
   - `--color-background: #0A0C10`
   - `--color-surface: #111520`
   - `--color-surface-elevated: #1C2130`
@@ -66,7 +66,7 @@ src/
 
 - [x] Criar `src/routes/AppRoutes.tsx` com React Router v7
 - [x] Configurar rota `/` → `Home.tsx` e `/analysis` → `Analysis.tsx`
-- [ ] Configurar rota `/components` → `ComponentsDoc.tsx` (acessível só via URL)
+- [x] Configurar rota `/components` → `ComponentsDoc.tsx` (acessível só via URL)
 - [x] Criar páginas vazias com placeholder pra cada rota
 
 ---

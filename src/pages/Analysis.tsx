@@ -1,3 +1,3 @@
-export default function Analyzis() {
+export default function Analysis() {
   return <h1>Analises</h1>;
 }
