@@ -39,8 +39,8 @@ Lexi é uma SPA que permite ao usuário colar qualquer texto e receber três an�
   - `--color-text-tertiary: #475569`
   - `--color-border: rgba(255,255,255,0.07)`
   - `--color-border-hover: rgba(255,255,255,0.14)`
-- [ ] Configurar fonte Inter via Google Fonts no `index.html`
-- [ ] Testar classes `bg-surface`, `text-accent`, `border-border` num componente dummy
+- [x] Configurar fonte Inter via Google Fonts no `index.html`
+- [x] Testar classes `bg-surface`, `text-accent`, `border-border` num componente dummy
 
 ---
 
@@ -48,7 +48,7 @@ Lexi é uma SPA que permite ao usuário colar qualquer texto e receber três an�
 
 **Definition of Done:** estrutura de diretórios criada conforme arquitetura feature-based definida no PDR.
 
-- [ ] Criar estrutura:
+- [x] Criar estrutura:
 
 ```
 src/

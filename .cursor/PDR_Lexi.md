@@ -136,7 +136,7 @@ export const SYSTEM_PROMPTS: Record<AnalysisMode, string> = {
 
 - [x] Setup do projeto (Vite + React + TS + Tailwind + React Router)
 - [x] Variável de ambiente para API key da Groq
-- [ ] `groq.service.ts` — função isolada de chamada à API
+- [x] `groq.service.ts` — função isolada de chamada à API
 - [ ] Tela de input — textarea + botão de análise
 - [ ] Validação do input (mínimo 100 caracteres, máximo 5000)
 - [ ] Integração com Groq — modo **resumo** funcionando
