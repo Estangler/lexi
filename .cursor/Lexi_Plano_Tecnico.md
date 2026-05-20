@@ -17,9 +17,9 @@ Lexi é uma SPA que permite ao usuário colar qualquer texto e receber três an�
 - [x] Criar projeto com `npm create vite@latest lexi -- --template react-ts`
 - [x] Instalar dependências: `react-router-dom`, `tailwindcss`, `@tailwindcss/vite`, `zod`
 - [x] Configurar `vite.config.ts` com plugin do Tailwind v4
-- [ ] Criar `.env.local` com `VITE_GROQ_API_KEY` e `VITE_GROQ_MODEL=llama3-8b-8192`
-- [ ] Adicionar `.env.local` ao `.gitignore`
-- [ ] Confirmar que `import.meta.env.VITE_GROQ_API_KEY` está acessível
+- [x] Criar `.env.local` com `VITE_GROQ_API_KEY` e `VITE_GROQ_MODEL=llama3-8b-8192`
+- [x] Adicionar `.env.local` ao `.gitignore`
+- [x] Confirmar que `import.meta.env.VITE_GROQ_API_KEY` está acessível
 
 ---
 

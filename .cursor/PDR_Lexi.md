@@ -1,4 +1,5 @@
 # PDR — Lexi
+
 ### Assistente de Texto com IA
 
 > O usuário cola qualquer conteúdo — artigo, capítulo, documentação, anotação —
@@ -30,14 +31,14 @@ conteúdo técnico ou acadêmico.
 
 ## Stack
 
-| Tecnologia | Decisão |
-|---|---|
+| Tecnologia         | Decisão                                      |
+| ------------------ | -------------------------------------------- |
 | React + TypeScript | Stack principal — consistência com portfólio |
-| TailwindCSS v4 | Estilização com design system |
-| Vite | Build e dev server |
-| Groq API | LLM gratuita, interface idêntica à OpenAI |
-| React Router | Navegação entre páginas |
-| Zod | Validação de inputs antes de enviar pra IA |
+| TailwindCSS v4     | Estilização com design system                |
+| Vite               | Build e dev server                           |
+| Groq API           | LLM gratuita, interface idêntica à OpenAI    |
+| React Router       | Navegação entre páginas                      |
+| Zod                | Validação de inputs antes de enviar pra IA   |
 
 ---
 
@@ -130,10 +131,11 @@ export const SYSTEM_PROMPTS: Record<AnalysisMode, string> = {
 ## Entregas por fase
 
 ### Fase 1 — MVP (1 semana)
+
 **Objetivo:** produto funcionando do zero ao resultado na tela.
 
-- [ ] Setup do projeto (Vite + React + TS + Tailwind + React Router)
-- [ ] Variável de ambiente para API key da Groq
+- [x] Setup do projeto (Vite + React + TS + Tailwind + React Router)
+- [x] Variável de ambiente para API key da Groq
 - [ ] `groq.service.ts` — função isolada de chamada à API
 - [ ] Tela de input — textarea + botão de análise
 - [ ] Validação do input (mínimo 100 caracteres, máximo 5000)
@@ -148,6 +150,7 @@ export const SYSTEM_PROMPTS: Record<AnalysisMode, string> = {
 ---
 
 ### Fase 2 — Três modos de análise (3-5 dias)
+
 **Objetivo:** entregar os três pilares do produto.
 
 - [ ] Modo **explicação** integrado
@@ -161,6 +164,7 @@ export const SYSTEM_PROMPTS: Record<AnalysisMode, string> = {
 ---
 
 ### Fase 3 — Experiência e polimento (3-5 dias)
+
 **Objetivo:** produto que impressiona no portfólio.
 
 - [ ] Histórico de sessões via localStorage
@@ -176,6 +180,7 @@ export const SYSTEM_PROMPTS: Record<AnalysisMode, string> = {
 ---
 
 ### Fase 4 — Diferenciais de portfólio (futuro)
+
 **Objetivo:** funcionalidades que elevam o projeto a outro nível.
 
 - [ ] Upload de arquivo PDF como input
@@ -190,6 +195,7 @@ export const SYSTEM_PROMPTS: Record<AnalysisMode, string> = {
 ## Regras de desenvolvimento
 
 ### Variáveis de ambiente
+
 ```bash
 # .env.local — nunca commitar
 VITE_GROQ_API_KEY=gsk_sua_chave_aqui
@@ -197,26 +203,30 @@ VITE_GROQ_MODEL=llama3-8b-8192
 ```
 
 ### A chamada à API fica isolada em um único lugar
+
 ```typescript
 // features/assistant/services/groq.service.ts
 export async function analyzeText(
   text: string,
-  mode: AnalysisMode
+  mode: AnalysisMode,
 ): Promise<string> {
-  const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "Authorization": `Bearer ${import.meta.env.VITE_GROQ_API_KEY}`,
+  const response = await fetch(
+    "https://api.groq.com/openai/v1/chat/completions",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${import.meta.env.VITE_GROQ_API_KEY}`,
+      },
+      body: JSON.stringify({
+        model: import.meta.env.VITE_GROQ_MODEL,
+        messages: [
+          { role: "system", content: SYSTEM_PROMPTS[mode] },
+          { role: "user", content: text },
+        ],
+      }),
     },
-    body: JSON.stringify({
-      model: import.meta.env.VITE_GROQ_MODEL,
-      messages: [
-        { role: "system", content: SYSTEM_PROMPTS[mode] },
-        { role: "user", content: text },
-      ],
-    }),
-  });
+  );
 
   if (!response.ok) {
     throw new Error(`Erro na API: ${response.status}`);
@@ -228,6 +238,7 @@ export async function analyzeText(
 ```
 
 ### Nenhum componente chama a API diretamente
+
 Componentes chamam hooks. Hooks chamam services. Services chamam a API.
 
 ```
@@ -238,14 +249,14 @@ Componente → useAssistant() → analyzeText() → Groq API
 
 ## O que esse projeto demonstra pro mercado
 
-| Habilidade | Como aparece no projeto |
-|---|---|
-| Integração com API de LLM | Groq API com system prompts estruturados |
-| Prompt engineering | Prompts centralizados e tipados por modo |
-| Tratamento de resposta não estruturada | Parse do JSON retornado pela IA |
-| Arquitetura escalável | Feature-based, service layer, hooks isolados |
-| UX de estados assíncronos | Loading, error e empty states em todos os fluxos |
-| TypeScript avançado | Tipos explícitos para todos os contratos da IA |
+| Habilidade                             | Como aparece no projeto                          |
+| -------------------------------------- | ------------------------------------------------ |
+| Integração com API de LLM              | Groq API com system prompts estruturados         |
+| Prompt engineering                     | Prompts centralizados e tipados por modo         |
+| Tratamento de resposta não estruturada | Parse do JSON retornado pela IA                  |
+| Arquitetura escalável                  | Feature-based, service layer, hooks isolados     |
+| UX de estados assíncronos              | Loading, error e empty states em todos os fluxos |
+| TypeScript avançado                    | Tipos explícitos para todos os contratos da IA   |
 
 ---
 
