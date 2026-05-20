@@ -77,7 +77,7 @@ src/
 
 **Definition of Done:** todos os tipos exportados e sem erros de TypeScript.
 
-- [ ] Criar `src/features/assistant/types/index.ts` com:
+- [x] Criar `src/features/assistant/types/index.ts` com:
 
 ```typescript
 type AnalysisMode = "summary" | "explanation" | "questions";
@@ -111,17 +111,17 @@ interface AssistantSession {
 **Definition of Done:** prompts exportados, tipados e consumíveis pelo service.
 
 - [x] Criar `src/features/assistant/constants/prompts.ts`
-- [ ] Escrever prompt para modo `summary`
+- [x] Escrever prompt para modo `summary`
   - Instrução para retornar bullets em português
   - Máximo 5 tópicos
   - Sem introdução nem conclusão
-- [ ] Escrever prompt para modo `explanation`:
+- [x] Escrever prompt para modo `explanation`:
   - Explicação didática com analogias
   - Parágrafos curtos
-- [ ] Escrever prompt para modo `questions`:
+- [x] Escrever prompt para modo `questions`:
   - Retornar **apenas** JSON válido — sem markdown, sem texto extra
   - Array com 5 objetos `{ question, answer }`
-- [ ] Tipar `SYSTEM_PROMPTS` como `Record<AnalysisMode, string>`
+- [x] Tipar `SYSTEM_PROMPTS` como `Record<AnalysisMode, string>`
 
 ---
 
@@ -129,12 +129,12 @@ interface AssistantSession {
 
 **Definition of Done:** `analyzeText()` retorna string com resposta da IA; erros lançados com mensagem descritiva.
 
-- [ ] Criar `src/features/assistant/services/groq.service.ts`
-- [ ] Implementar função `analyzeText(text: string, mode: AnalysisMode): Promise<string>`
-- [ ] Montar payload com `model`, `messages` (system + user)
-- [ ] Adicionar verificação `if (!response.ok) throw new Error(...)`
-- [ ] Retornar `data.choices[0].message.content`
-- [ ] Testar chamada no console antes de integrar com UI
+- [x] Criar `src/features/assistant/services/groq.service.ts`
+- [x] Implementar função `analyzeText(text: string, mode: AnalysisMode): Promise<string>`
+- [x] Montar payload com `model`, `messages` (system + user)
+- [x] Adicionar verificação `if (!response.ok) throw new Error(...)`
+- [x] Retornar `data.choices[0].message.content`
+- [x] Testar chamada no console antes de integrar com UI
 
 ---
 
@@ -142,10 +142,10 @@ interface AssistantSession {
 
 **Definition of Done:** `validateTextInput()` retorna erros descritivos para inputs inválidos.
 
-- [ ] Criar `src/validators/validateTextInput.ts`
-- [ ] Validar mínimo de 100 caracteres
-- [ ] Validar máximo de 5000 caracteres
-- [ ] Retornar `{ isValid: boolean, error: string | null }`
+- [x] Criar `src/validators/validateTextInput.ts`
+- [x] Validar mínimo de 100 caracteres
+- [x] Validar máximo de 5000 caracteres
+- [x] Retornar `{ isValid: boolean, error: string | null }`
 - [ ] Usar Zod schema como alternativa: `z.string().min(100).max(5000)`
 
 ---

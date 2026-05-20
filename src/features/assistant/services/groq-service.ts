@@ -1,6 +1,7 @@
 import { env } from "../../../config/env";
+import type { AnalysisMode } from "../types";
 
-async function testGroq() {
+async function analyzeText(text: string, mode: AnalysisMode): Promise<string> {
   try {
     const res = await fetch("https://api.groq.com/openai/v1/chat/completions", {
       method: "POST",
@@ -12,17 +13,20 @@ async function testGroq() {
         model: env.groqModel,
         messages: [
           {
-            role: "user",
-            content: "Diga apenas: Say my name! beyonce",
+            role: mode,
+            content: text,
           },
         ],
       }),
     });
+
     if (!res.ok) {
       throw new Error("res is not ok. :(");
     }
     const data = await res.json();
     console.log(data);
+
+    return data;
   } catch (error) {
     console.error(error);
   }
