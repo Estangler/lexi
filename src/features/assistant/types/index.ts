@@ -20,3 +20,11 @@ export interface AssistantSession {
   isLoading: boolean;
   error: string | null;
 }
+
+export type GroqResponse = {
+  choices: {
+    message: {
+      content: string;
+    };
+  }[];
+};
