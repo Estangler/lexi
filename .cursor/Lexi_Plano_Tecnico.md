@@ -110,8 +110,8 @@ interface AssistantSession {
 
 **Definition of Done:** prompts exportados, tipados e consumíveis pelo service.
 
-- [ ] Criar `src/features/assistant/constants/prompts.ts`
-- [ ] Escrever prompt para modo `summary`:
+- [x] Criar `src/features/assistant/constants/prompts.ts`
+- [ ] Escrever prompt para modo `summary`
   - Instrução para retornar bullets em português
   - Máximo 5 tópicos
   - Sem introdução nem conclusão
