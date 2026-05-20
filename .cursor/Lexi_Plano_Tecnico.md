@@ -64,10 +64,10 @@ src/
 └── components/
 ```
 
-- [ ] Criar `src/routes/AppRoutes.tsx` com React Router v7
-- [ ] Configurar rota `/` → `Home.tsx` e `/analysis` → `Analysis.tsx`
+- [x] Criar `src/routes/AppRoutes.tsx` com React Router v7
+- [x] Configurar rota `/` → `Home.tsx` e `/analysis` → `Analysis.tsx`
 - [ ] Configurar rota `/components` → `ComponentsDoc.tsx` (acessível só via URL)
-- [ ] Criar páginas vazias com placeholder pra cada rota
+- [x] Criar páginas vazias com placeholder pra cada rota
 
 ---
 
