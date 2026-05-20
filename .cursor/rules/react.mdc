@@ -1,0 +1,54 @@
+---
+description: React component patterns, hooks, and performance conventions.
+globs: ["**/*.tsx", "**/*.jsx"]
+alwaysApply: false
+---
+
+# React Standards
+
+## Component Design
+
+- One component = one responsibility. If it does two things, split it.
+- Keep components under ~150 lines. If longer, extract sub-components or hooks.
+- Separate data-fetching/logic into custom hooks. Keep JSX as "dumb" as possible.
+- Use named exports for all components. Default export only for page-level files.
+
+## JSX
+
+- Avoid inline objects/functions in JSX props when they cause unnecessary re-renders in memoized children.
+
+```tsx
+// ❌ Avoid
+<Table columns={["name", "email"]} style={{ padding: 16 }} />;
+
+// ✅ Prefer
+const COLUMNS = ["name", "email"];
+const tableStyle = { padding: 16 };
+<Table columns={COLUMNS} style={tableStyle} />;
+```
+
+## State & Hooks
+
+- Lift state only as high as needed — not everything belongs in global state.
+- Use `useCallback` and `useMemo` only when you have a concrete performance reason (profiler data), not preemptively.
+- When prop drilling goes more than 2 levels deep, suggest Context or a state manager.
+
+## Patterns
+
+- Always handle the 3 async states: loading, error, and empty — not just the happy path.
+- Use early returns in components to reduce nesting.
+
+```tsx
+// ✅ Guard clauses in components
+if (isLoading) return <Spinner />;
+if (error) return <ErrorMessage message={error.message} />;
+if (!data.length) return <EmptyState />;
+
+return <DataTable rows={data} />;
+```
+
+## Accessibility
+
+- Use semantic HTML elements: `<button>` for actions, `<a>` for navigation.
+- Every `<img>` needs an `alt` attribute.
+- Interactive elements must be keyboard accessible.

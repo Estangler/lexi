@@ -1,0 +1,85 @@
+---
+description: General code quality rules — naming, functions, error handling, and anti-patterns.
+globs: ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx"]
+alwaysApply: false
+---
+
+# Code Quality
+
+## Functions
+
+- Single responsibility: a function does ONE thing.
+- Use guard clauses (early returns) instead of deeply nested if/else.
+- Extract complex conditions into named variables or functions.
+
+```typescript
+// ❌ Avoid
+function process(user) {
+  if (user) {
+    if (user.isActive) {
+      if (user.role === "admin") {
+        // actual logic buried here
+      }
+    }
+  }
+}
+
+// ✅ Prefer
+function process(user: User) {
+  if (!user) return;
+  if (!user.isActive) return;
+  if (user.role !== "admin") return;
+  // actual logic at the top level
+}
+```
+
+## Naming
+
+- Never use single-letter variables outside of short loop indices.
+- No magic numbers or strings — extract into named constants.
+
+```typescript
+// ❌ Avoid
+if (retries > 3) { ... }
+
+// ✅ Prefer
+const MAX_RETRY_COUNT = 3;
+if (retries > MAX_RETRY_COUNT) { ... }
+```
+
+## Variables
+
+- Always use `const`. Use `let` only when reassignment is needed. Never use `var`.
+- Never mutate state or function arguments — always return a new reference.
+
+## Error Handling
+
+- Always use try/catch with meaningful, contextual error messages.
+- Never silence errors with an empty catch block.
+
+```typescript
+// ❌ Avoid
+try { ... } catch {}
+
+// ✅ Prefer
+try {
+  const data = await fetchOrder(id);
+  return data;
+} catch (error) {
+  console.error(`[fetchOrder] Failed for id=${id}:`, error);
+  throw new Error('Could not load order. Please try again.');
+}
+```
+
+## Comments
+
+- Comment the WHY, not the WHAT.
+- TODOs must include context: `// TODO: remove after API v2 migration — @yourname`
+
+## What to always flag in generated code
+
+1. Duplicated logic → suggest extraction
+2. Unhandled edge cases (null, empty, error)
+3. Magic numbers/strings
+4. Missing types on function signatures
+5. Prop drilling beyond 2 levels
