@@ -158,15 +158,15 @@ interface AssistantSession {
 
 - [x] Criar `src/features/assistant/hooks/useAssistant.ts`
 - [x] Inicializar estado `AssistantSession` com valores padrão
-- [ ] Implementar `analyze(text: string, mode: AnalysisMode)`:
+- [x] Implementar `analyze(text: string, mode: AnalysisMode)`:
   - Setar `isLoading: true` e `error: null`
   - Chamar `analyzeText()` do service
   - Para modo `questions`: fazer `JSON.parse()` da resposta e mapear pra `Question[]` com `crypto.randomUUID()`
   - Salvar resultado em `results[mode]` — cache por modo
   - Setar `isLoading: false` no `finally`
-- [ ] Implementar `toggleReveal(id: string)` para `QuestionCard`
-- [ ] Implementar verificação de cache: se `results[mode]` já existe, não refaz a chamada
-- [ ] Tratar erro de `JSON.parse` no modo questions separadamente
+- [x] Implementar `toggleReveal(id: string)` para `QuestionCard`
+- [x] Implementar verificação de cache: se `results[mode]` já existe, não refaz a chamada
+- [x] Tratar erro de `JSON.parse` no modo questions separadamente
 
 ---
 
