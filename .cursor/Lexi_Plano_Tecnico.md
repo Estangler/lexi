@@ -156,8 +156,8 @@ interface AssistantSession {
 
 **Definition of Done:** hook expõe estado da sessão e função `analyze()` que atualiza estado corretamente em todos os cenários.
 
-- [ ] Criar `src/features/assistant/hooks/useAssistant.ts`
-- [ ] Inicializar estado `AssistantSession` com valores padrão
+- [x] Criar `src/features/assistant/hooks/useAssistant.ts`
+- [x] Inicializar estado `AssistantSession` com valores padrão
 - [ ] Implementar `analyze(text: string, mode: AnalysisMode)`:
   - Setar `isLoading: true` e `error: null`
   - Chamar `analyzeText()` do service
