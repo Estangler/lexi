@@ -1,5 +1,6 @@
 import Badge from "../components/Badge/index";
 import Button from "../components/Button/index";
+import { Sparkles } from "lucide-react";
 
 export default function ComponentsDoc() {
   return (
@@ -23,10 +24,14 @@ export default function ComponentsDoc() {
         </Button>
       </div>
       <div className="flex flex-col gap-2">
-        <Badge>
-          Powered by{" "}
-          <strong className="font-semibold text-primary">Groq</strong>
+        <Badge Icon={Sparkles} label="Powered by ">
+          <strong className="text-primary">Groq</strong>
         </Badge>
+        <div className="flex gap-2">
+          <Badge label="Resumo" variant="primary" />
+          <Badge label="Resumo" variant="primary" />
+          <Badge label="01" variant="primary" />
+        </div>
       </div>
     </div>
   );
