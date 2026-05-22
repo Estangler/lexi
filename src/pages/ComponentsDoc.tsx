@@ -1,4 +1,5 @@
-import Button from "../components/Button/Button";
+import Badge from "../components/Badge/index";
+import Button from "../components/Button/index";
 
 export default function ComponentsDoc() {
   return (
@@ -20,6 +21,12 @@ export default function ComponentsDoc() {
         <Button variant="ghost" loading>
           Disabled
         </Button>
+      </div>
+      <div className="flex flex-col gap-2">
+        <Badge>
+          Powered by{" "}
+          <strong className="font-semibold text-primary">Groq</strong>
+        </Badge>
       </div>
     </div>
   );

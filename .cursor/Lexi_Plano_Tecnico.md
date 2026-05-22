@@ -176,8 +176,8 @@ interface AssistantSession {
 
 **Definition of Done:** componentes renderizam corretamente e aceitam as props tipadas.
 
-- [ ] `src/components/Button.tsx` — variantes: `primary`, `ghost`; estados: `loading`, `disabled`
-- [ ] `src/components/Spinner.tsx` — animação CSS, tamanho configurável
+- [x] `src/components/Button.tsx` — variantes: `primary`, `ghost`; estados: `loading`, `disabled`
+- [x] `src/components/Spinner.tsx` — animação CSS, tamanho configurável
 - [ ] `src/components/Badge.tsx` — recebe `label` e `variant`
 - [ ] `src/components/Navbar.tsx` — logo `Lexi.` + badge `✦ Powered by Groq` com pulse animation
 
